@@ -2,17 +2,15 @@ import './App.css';
 import Welcome from './WelcomeMessage';
 import React, { Component } from 'react'
 import styled from 'styled-components';
-
-const MyButton = styled.div`
-color: green;
-`
-export class App extends Component {
+import AppLayout from './AppLayout';
+import AppBar from './AppBar'
+class App extends Component {
   render() {
     return (
-      <div>
+      <AppLayout>
+        <AppBar/>
         <Welcome/>
-        <MyButton><button>Hello!</button></MyButton>
-      </div>
+      </AppLayout>
     )
   }
 }
