@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled, {css} from 'styled-components'
+import { AppContext } from './AppProvider';
 const Bar = styled.div`
     display: grid;
     grid-template-columns: 180px auto 100px 100px;
@@ -12,7 +13,15 @@ const ControlButtonElem = styled.div`
     `}
 `
 function ControlButton ({name, active}) {
-return <ControlButtonElem active= {active}> {toProperCase(name)}</ControlButtonElem>
+return (
+    <AppContext.Consumer>
+        {({page}) => (
+        <ControlButtonElem active= {page === name}> 
+        {toProperCase(name)}
+        </ControlButtonElem>
+        )}
+    </AppContext.Consumer>
+    )
 }
 
 function toProperCase (lower) {
